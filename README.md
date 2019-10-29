@@ -1,10 +1,10 @@
 # GCP Identity Aware Proxy
 
-I am not going to lie I struggled with this for a while but finally got it figured out with terraform.  
+I am not going to lie, I struggled with this for a while but finally got it figured out with terraform.  
 We have to role this out to a large number of projects so I developed a template to automate some of the process.  
 This main.tf will accomplish a few things:  
 1. Create the correct firewall rule
-2. Add the proper roles to a user
+2. Add the proper roles to a user (this has a for_each for adding multiple users)
 3. Spin up an instance
 4. Attach the role IAP tunnel user to the instance using an email address
 
@@ -79,3 +79,7 @@ resource "google_iap_tunnel_instance_iam_member" "instance" {
   depends_on = [google_compute_instance.default]
 }
 ```
+
+## Conclusion
+
+Now you should be able to use the command `gcloud beta compute ssh {{ instance-name }} --zone {{ instance-zone }} --tunnel-through-iap`  
