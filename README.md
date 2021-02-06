@@ -81,7 +81,6 @@ resource "google_iap_tunnel_instance_iam_member" "instance" {
 ```
 
 ## Conclusion
-
 Now you should be able to use the command  
 `gcloud beta compute ssh {{ instance-name }} --zone {{ instance-zone }} --tunnel-through-iap`    
 I understand that giving the compute Admin role to users can be difficult but this can be accomplished by building a custom role.

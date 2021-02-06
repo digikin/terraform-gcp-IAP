@@ -3,7 +3,6 @@ provider "google-beta" {
 }
 
 provider "google" {
-
 }
 
 locals {
